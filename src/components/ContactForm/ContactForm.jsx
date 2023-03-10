@@ -1,6 +1,7 @@
-import { render } from '@testing-library/react';
+import { nanoid } from 'nanoid';
 import React from 'react';
 import { Component } from 'react';
+
 // import PropTypes from 'prop-types';
 
 export class FormContact extends Component {
@@ -8,7 +9,8 @@ export class FormContact extends Component {
     name: '',
     number: '',
   };
-
+nameId = nanoid();
+numberId = nanoid();
 
 handleInputChange = event => {
   // console.log(event.currentTarget.value)
@@ -18,15 +20,21 @@ handleInputChange = event => {
 
 handleSubmit = e => {
   e.preventDefault();
-  console.log(this.state);
-  
+//   console.log(this.state);
+  this.props.onSubmit(this.state);
+  this.reset();
+
 };
+reset = ()=> {
+    this.setState({ name: '',
+    number: ''})
+}
 render() {
     return (
         <form onSubmit={this.handleSubmit}>
-          <label>
+          <label htmlFor={this.nameId}>
             Name
-            <input
+            <input id={this.nameId}
               type="text"
               name="name"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -36,9 +44,9 @@ render() {
               onChange={this.handleInputChange}
             />
           </label>
-          <label>
+          <label htmlFor={this.numberId}>
             Number
-            <input
+            <input id={this.numberId}
               type="tel"
               name="number"
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

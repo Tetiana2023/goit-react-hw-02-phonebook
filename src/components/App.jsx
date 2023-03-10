@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import React from 'react';
+import { FormContact } from './ContactForm/ContactForm';
+import { ContactList } from './ContactList/ContactList';
 
 export class App extends Component {
   state = {
@@ -11,24 +13,16 @@ export class App extends Component {
     ],
     filter: '',
      };
-
-  handleInputChange = event => {
-// console.log(event.currentTarget.value)
-const {name, value }= event.currentTarget
-this.setState({[name]: value})
-  }
-  handleSubmit = e => {
-    e.preventDefault();
-    console.log(this.state)
-
-
-  }
+formSubmitHandler= data => {
+  console.log(data)
+}
   render() {
     return (
       <div>
         <h1>Phonebook</h1>
-        
+        <FormContact onSubmit={this.formSubmitHandler}/>
         <h2>Contacts</h2>
+        <ContactList contacts={this.state.contacts} />
       </div>
     );
   }
