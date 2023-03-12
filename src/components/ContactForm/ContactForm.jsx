@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
 import React from 'react';
 import { Component } from 'react';
+import css from './ContactForm.module.css'
 
 // import PropTypes from 'prop-types';
 
@@ -31,7 +32,7 @@ reset = ()=> {
 }
 render() {
     return (
-        <form onSubmit={this.handleSubmit}>
+        <form className={css.form} onSubmit={this.handleSubmit}>
           <label htmlFor={this.nameId}>
             Name
             <input id={this.nameId}
@@ -57,7 +58,7 @@ render() {
             />
           </label>
 
-          <button type="submit">Add contact </button>
+          <button className={css.formbtn} type="submit">Add contact </button>
         </form>
 
      )

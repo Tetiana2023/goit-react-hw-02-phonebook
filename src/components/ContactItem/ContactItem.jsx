@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import css from './ContactItem.module.css';
 
 export const ContactItem = ({name, number, hendleDeleteContact})=>{
     return(
         <>
-        <div>
+        <div className={css.item}>
             <p>{name}:</p>
             <p>{number}</p>
-            <button type="button" onClick={hendleDeleteContact}>Delete</button>
+            <button className={css.button} type="button" onClick={hendleDeleteContact}>Delete</button>
         </div>
         </>
     )
