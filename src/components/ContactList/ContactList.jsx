@@ -1,7 +1,7 @@
 import React from 'react';
 import { ContactItem } from 'components/ContactItem/ContactItem';
 
-export const ContactList = ({contacts})=> {
+export const ContactList = ({contacts, hendleDeleteContact})=> {
     return (
         <>
         <ul >
@@ -10,7 +10,8 @@ export const ContactList = ({contacts})=> {
              
             <ContactItem 
             name={name}
-            number={number}/>
+            number={number}
+            hendleDeleteContact={()=> hendleDeleteContact(id)}/>
             </li>))} 
         </ul>
         </>

@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const ContactItem = ({name, number})=>{
+export const ContactItem = ({name, number, hendleDeleteContact})=>{
     return(
         <>
         <div>
             <p>{name}:</p>
             <p>{number}</p>
-            <button type="button">Delete</button>
+            <button type="button" onClick={hendleDeleteContact}>Delete</button>
         </div>
         </>
     )
